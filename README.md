@@ -8,5 +8,5 @@ Collection of custom Splunk SPL queries developed by me.
 - Fast triage and investigation
 
 ## Queries List
-
+Potential Initial Access via DLL Search Order Hijacking
 
