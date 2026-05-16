@@ -24,7 +24,7 @@
 ```
 | join process_guid
             [
-                search index=tebyan_windows (EventCode=1 OR EventCode=4688)
+                search index=winevents (EventCode=1 OR EventCode=4688)
                 | eval process_command_line=coalesce(CommandLine, Process_Command_Line)
                 | table process_guid process_command_line
             ]
@@ -43,7 +43,7 @@
 ```
 | join parent_process_guid
     [
-                search index=tebyan_windows (EventCode=1 OR EventCode=4688)
+                search index=winevents (EventCode=1 OR EventCode=4688)
                 | table parent_process_guid CommandLine
     ]
 ```
