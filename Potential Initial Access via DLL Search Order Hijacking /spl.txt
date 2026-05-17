@@ -8,14 +8,21 @@
 # This query contains multiple "join" subsearches which significantly increase the load on Splunk.
 # All join sections have been commented out by default for better performance.
 #
-# You can uncomment the join blocks (remove the ```) if you need full process enrichment 
+# IMPORTANT:
+# One of the subsearches queries raw Windows Event Logs:
+# (index=winevents EventCode=1 OR EventCode=4688)
+#
+# This section can be resource-intensive and MUST be used with a strict time range filter ( earliest=-1h or appropriate scoped window based on investigation).
+# Without time constraints, this subsearch may cause high system load, slowdowns, or timeouts.
+#
+# You can uncomment the join blocks (remove the ``` ) if you need full process enrichment
 # and command-line details during deeper investigation.
 #
 # Important:
-# - The base query (without joins) is likely to generate a higher number of false positives 
+# - The base query (without joins) is likely to generate a higher number of false positives
 #   in the initial deployment.
-# - It is strongly recommended to test this detection in your environment and tune it 
-#   (add whitelists, adjust paths, add specific process exclusions, etc.) based on your 
+# - It is strongly recommended to test this detection in your environment and tune it
+#   (add whitelists, adjust paths, add specific process exclusions, etc.) based on your
 #   company's baseline and applications.
 # - Start with a longer time window in a test index before deploying it to production.
 #
