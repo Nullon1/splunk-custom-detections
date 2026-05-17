@@ -1,3 +1,21 @@
+# =====================================================
+# UseCase: Potential Initial Access via DLL Search Order Hijacking
+# MITRE ATT&CK: T1574.001
+# Severity: High
+# =====================================================
+
+# PERFORMANCE NOTE:
+# This query contains multiple "join" subsearches which significantly increase the load on Splunk.
+# All join sections have been commented out by default for better performance.(comment -> ``` <SPL> ```)
+#
+# You can uncomment the join blocks if you need full process enrichment and command-line details.
+# However, it is recommended to run the base query first (without joins) and only use joins 
+# when investigating a specific suspicious alert to avoid high resource consumption.
+#
+# Best Practice: Use this query with "tstats" acceleration and schedule it during off-peak hours.
+
+# =====================================================
+
 | tstats 
     summariesonly=true 
     min(_time) AS firstTime
@@ -54,7 +72,11 @@
     OR like(file_path,"C:\\Program Files%")
     OR like(file_path,"C:\\Program Files (x86)%")
 )
-| where match(process_path, "(?i)\\\\windows\\\\system32\\\\")
+| where (
+    match(process_path, "(?i)\\\\(windows\\\\(system32|syswow64))\\\\") 
+    OR process_name IN ("rundll32.exe", "regsvr32.exe", "regsvr64.exe", 
+                       "mshta.exe", "powershell.exe", "pwsh.exe")
+)
 | eval Time=if(
     firstTime==lastTime,
     strftime(firstTime,"%Y-%m-%d %H:%M:%S"),
