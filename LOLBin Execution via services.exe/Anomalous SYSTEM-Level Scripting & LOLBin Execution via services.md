@@ -67,7 +67,7 @@ Additionally, due to the absence of consistently normalized command-line telemet
 | rename process_guid as ProcessGuid
 
 | append [
-    search index=tebyan_windows EventCode=1 ParentImage="*\\services.exe"
+    search index=winevents EventCode=1 ParentImage="*\\services.exe"
     AND (
         Image="*\\powershell.exe"
         OR Image="*\\pwsh.exe"
