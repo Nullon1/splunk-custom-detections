@@ -56,7 +56,7 @@ Additionally, due to the absence of consistently normalized command-line telemet
 
 ## Detection Logic (Splunk SPL)
 
-```spl
+```cpp
 | tstats summariesonly=true count
     from datamodel=Endpoint.Processes
     where Processes.parent_process_name="services.exe"
@@ -66,7 +66,6 @@ Additionally, due to the absence of consistently normalized command-line telemet
 | rename Processes.* as *
 | rename process_guid as ProcessGuid
 
-| comment "--- High-performance stage: only Sysmon events associated with previously identified execution utilities are loaded ---"
 | append [
     search index=tebyan_windows EventCode=1 ParentImage="*\\services.exe"
     AND (
@@ -83,7 +82,6 @@ Additionally, due to the absence of consistently normalized command-line telemet
     | fields dest ProcessGuid CommandLine ParentImage
 ]
 
-| comment "--- Correlation of Data Model and Sysmon telemetry using ProcessGuid ---"
 | stats values(parent_process_name) as parent_process_name
         values(process_name) as process_name
         values(process_path) as process_path
@@ -94,7 +92,6 @@ Additionally, due to the absence of consistently normalized command-line telemet
 | where isnotnull(CommandLine)
     AND isnotnull(process_name)
 
-| comment "--- Logic Segmentation: Script Interpreters vs. Execution Engines ---"
 | where (
 
     (
@@ -113,7 +110,6 @@ Additionally, due to the absence of consistently normalized command-line telemet
 
 )
 
-| comment "--- Noise suppression for approved administrative tooling ---"
 | where NOT match(CommandLine,"(?i)(SplunkUniversalForwarder|Splunk_TA_windows|netstat|tasklist|LocalDateTime)")
 ```
 
