@@ -27,6 +27,9 @@ The detection aligns with the following MITRE ATT&CK techniques:
 * **T1059** – Command and Scripting Interpreter
 * **T1202** – Indirect Command Execution
 
+> Note: This detection is not guaranteed to work exactly the same in every environment,
+> since each organization may need to adjust it based on its own setup and needs. But the overall structure and logic stays the same.
+
 ---
 
 ## Key Detection Pillars
