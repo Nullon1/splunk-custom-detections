@@ -24,3 +24,7 @@ It also includes analyst guidance to support investigation, False Positives and 
 - T1569.002 – System Services
 
 > Note : This detection should be adapted per environment depending on logging quality, service behavior, and organizational baselines.
+
+<p align="center">
+  <img src="https://github.com/Nullon1/splunk-custom-detections/blob/main/LOLBin%20Execution%20via%20services.exe/images/Banner.jpg">
+</p>
