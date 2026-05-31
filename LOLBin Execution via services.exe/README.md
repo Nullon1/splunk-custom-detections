@@ -1,6 +1,6 @@
 # Detection : Anomalous SYSTEM-Level Scripting & LOLBin Execution via services.exe
 
-This repository contains a behavioral detection rule focused on identifying suspicious process execution originating from `services.exe` under the `SYSTEM` context in Windows environments.
+This project contains a behavioral detection rule focused on identifying suspicious process execution originating from `services.exe` under the `SYSTEM` context in Windows environments.
 
 The goal is to detect potential abuse of legitimate Windows services for executing scripting engines and LOLBins commonly used in post-exploitation scenarios.
 
@@ -15,6 +15,7 @@ The goal is to detect potential abuse of legitimate Windows services for executi
 
 ## Use Case
 This rule is intended for threat hunting and detection engineering purposes. It is designed as a baseline model and may require tuning based on environment-specific behavior and telemetry coverage.
+It also includes analyst guidance to support investigation, False Positives and Potential improvments. 
 
 ## MITRE ATT&CK
 - T1543.003 – Create or Modify System Process
