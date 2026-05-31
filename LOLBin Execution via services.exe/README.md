@@ -23,5 +23,4 @@ It also includes analyst guidance to support investigation, False Positives and 
 - T1202 – Indirect Command Execution
 - T1569.002 – System Services
 
-## Note
-This detection should be adapted per environment depending on logging quality, service behavior, and organizational baselines.
+> Note : This detection should be adapted per environment depending on logging quality, service behavior, and organizational baselines.
