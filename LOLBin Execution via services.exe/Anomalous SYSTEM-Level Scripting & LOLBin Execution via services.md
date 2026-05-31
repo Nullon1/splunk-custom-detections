@@ -171,7 +171,7 @@ Review adjacent telemetry for:
 
 This rule represents a robust hybrid detection model that combines process lineage monitoring with command-line behavioral analytics. The design prioritizes operational fidelity, scalability, and investigation efficiency while maintaining a manageable false-positive profile.
 
-### Future Improvements
+### Potential Improvements
 
 * Baseline modeling of legitimate service-hosted command-line behavior on critical assets.
 * Elimination of the `append` command through complete Endpoint Data Model enrichment and validation.
