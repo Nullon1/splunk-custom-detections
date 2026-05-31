@@ -56,7 +56,7 @@ Additionally, due to the absence of consistently normalized command-line telemet
 
 ## Detection Logic (Splunk SPL)
 
-```cpp
+```python
 | tstats summariesonly=true count
     from datamodel=Endpoint.Processes
     where Processes.parent_process_name="services.exe"
