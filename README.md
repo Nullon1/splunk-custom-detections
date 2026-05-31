@@ -28,7 +28,9 @@ Every detection is maintained in its own directory and includes dedicated docume
 * Possible future improvements
 
 ## Queries List
-> 1)Potential Initial Access via DLL Search Order Hijacking
-> 2)LOLBin Execution via services.exe
 
-##Notes : These detections were developed and tested using available telemetry and lab environments. Additional tuning, exclusions, and validation may be required before deployment in production environments.
+> - Potential Initial Access via DLL Search Order Hijacking
+> - LOLBin Execution via services.exe
+
+## Notes
+These detections were developed and tested using available telemetry and lab environments. Additional tuning, exclusions, and validation may be required before deployment in production environments.
